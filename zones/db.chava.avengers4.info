@@ -1,16 +1,16 @@
-;
-; BIND data file for local loopback interface
-;
-$TTL	604800
-@	IN	SOA	chava.avengers4.info. ofdez72.gmail.com. (
-			      4		; Serial
-			 604800		; Refresh
-			  86400		; Retry
-			2419200		; Expire
-			 604800 )	; Negative Cache TTL
-;
-	IN	NS	ns1.chava.avengers4.info.
-;
-		IN	A	64.227.105.147
-ns1		IN	A	64.227.105.147
-nota		IN	A	1.1.1.1
+$ORIGIN .
+$TTL 604800	; 1 week
+chava.avengers4.info	IN SOA	chava.avengers4.info. ofdez72.gmail.com. (
+				5          ; serial
+				604800     ; refresh (1 week)
+				86400      ; retry (1 day)
+				2419200    ; expire (4 weeks)
+				604800     ; minimum (1 week)
+				)
+			NS	ns1.chava.avengers4.info.
+			A	64.227.105.147
+$ORIGIN chava.avengers4.info.
+nota			A	1.1.1.1
+ns1			A	64.227.105.147
+$TTL 3600	; 1 hour
+prueba			A	192.168.1.30

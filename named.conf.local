@@ -5,18 +5,23 @@
 // Consider adding the 1918 zones here, if they are not used in your
 // organization
 //include "/etc/bind/zones.rfc1918";
-key DDNS_UPDATE {
-        algorithm HMAC-MD5.SIG-ALG.REG.INT;
-        secret "vvdx0SvvS8kB0KatKXoBnA==";
+
+key "ddns-key.chava.avengers4.info" {
+        algorithm hmac-md5;
+        secret "vKoiGTPnewCpACOC8CVQBA==";
 };
 
 zone "chava.avengers4.info" {
 	type master;
-	file "/etc/bind/zones/db.chava.avengers4.info";
-	allow-update { key DDNS_UPDATE; };
+	file "/var/cache/bind/db.chava.avengers4.info";
+	update-policy {
+          grant ddns-key.chava.avengers4.info zonesub ANY;
+};
 };
 zone "1.168.192.in-addr.arpa" { 
 	type master;
-	file "/etc/bind/zones/db.192.168.1";
-	allow-update { key DDNS_UPDATE; };
+	file "/var/cache/bind/db.192.168.1";
+	update-policy {
+          grant ddns-key.chava.avengers4.info zonesub ANY;
+};
 };
